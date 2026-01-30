@@ -2,12 +2,7 @@ import math
 
 
 def circleAreaCoverage(radiusOfCircle1, radiusOfCircle2):
-    """
-    Calculates the percentage of the larger circle's area
-    that can be covered by the smaller circle.
 
-    Both radii must be positive integers.
-    """
 
     # Check that both inputs are integers
     if not isinstance(radiusOfCircle1, int) or not isinstance(radiusOfCircle2, int):
