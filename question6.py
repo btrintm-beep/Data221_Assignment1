@@ -1,59 +1,70 @@
-import math
-
-
-def circleAreaCoverage(radiusOfCircle1, radiusOfCircle2):
+def distributionAnalysis(numbersList):
     """
-    Calculates the percentage of the larger circle's area
-    that can be covered by the smaller circle.
-
-    Both radii must be positive integers.
+    Receives a list of numbers and returns a dictionary where:
+    - Each key is a unique value from the list
+    - Each value is the percentage of elements in the list
+      that are less than or equal to that key
+    The dictionary is sorted by key before being returned
     """
 
-    # Check that both inputs are integers
-    if not isinstance(radiusOfCircle1, int) or not isinstance(radiusOfCircle2, int):
-        return "Both radii must be positive integers."
+    # Check that the list is not empty
+    if len(numbersList) == 0:
+        return "The list cannot be empty."
 
-    # Check that both inputs are positive
-    if radiusOfCircle1 <= 0 or radiusOfCircle2 <= 0:
-        return "Both radii must be positive integers."
+    # Check that all values in the list are numbers (int or float)
+    for value in numbersList:
+        if not isinstance(value, (int, float)):
+            return "All values in the list must be numbers."
 
-    # Calculate the area of the first circle
-    areaOfCircle1 = math.pi * (radiusOfCircle1 ** 2)
+    totalElements = len(numbersList)
 
-    # Calculate the area of the second circle
-    areaOfCircle2 = math.pi * (radiusOfCircle2 ** 2)
+    # Create a list of unique values and sort it
+    uniqueValues = sorted(set(numbersList))
 
-    # Determine which area is larger and smaller
-    if areaOfCircle1 > areaOfCircle2:
-        largerArea = areaOfCircle1
-        smallerArea = areaOfCircle2
-    else:
-        largerArea = areaOfCircle2
-        smallerArea = areaOfCircle1
+    # Create an empty dictionary to store results
+    distributionDictionary = {}
 
-    # Calculate percentage coverage
-    percentageCoverage = (smallerArea / largerArea) * 100
+    # Loop through each unique value
+    for key in uniqueValues:
+        countLessOrEqual = 0
 
-    return percentageCoverage
+        # Count how many values are less than or equal to the key
+        for number in numbersList:
+            if number <= key:
+                countLessOrEqual += 1
+
+        # Calculate percentage
+        percentage = (countLessOrEqual / totalElements) * 100
+
+        # Store in dictionary
+        distributionDictionary[key] = percentage
+
+    return distributionDictionary
 
 
 # -------------------------
 # Main Program
 # -------------------------
 
-# Ask the user for input
-userRadius1 = input("Enter the radius of the first circle: ")
-userRadius2 = input("Enter the radius of the second circle: ")
+# Ask user to enter numbers separated by spaces
+userInput = input("Enter a list of numbers separated by spaces: ")
 
-# Check that inputs are numbers before converting
-if not userRadius1.isdigit() or not userRadius2.isdigit():
-    print("Both radii must be positive integers.")
-else:
-    # Convert inputs to integers
-    radiusOfCircle1 = int(userRadius1)
-    radiusOfCircle2 = int(userRadius2)
+# Split input into a list of strings
+inputList = userInput.split()
 
-    # Call the function and print result
-    result = circleAreaCoverage(radiusOfCircle1, radiusOfCircle2)
-    print("Percentage of coverage:", result, "%")
+numbersList = []
 
+# Convert input values to numbers
+for value in inputList:
+    try:
+        numbersList.append(float(value))
+    except:
+        print("All values must be numbers.")
+        numbersList = []
+        break
+
+# Run function if input is valid
+if len(numbersList) > 0:
+    result = distributionAnalysis(numbersList)
+    print("Distribution Dictionary:")
+    print(result)
