@@ -1,15 +1,10 @@
 def timeConversion(secondsSinceMidnight):
-    """
-    Converts a given number of seconds since midnight into:
-    Hours, Minutes, Seconds, and AM or PM.
-    Returns a formatted string.
-    """
-
-    # Check that input is an integer
+    
+    # Make sure that the input is an integer
     if not isinstance(secondsSinceMidnight, int):
         return "Input must be a non-negative integer."
 
-    # Check that input is non-negative
+    # make sure that the input is either 0 or higher
     if secondsSinceMidnight < 0:
         return "Input must be a non-negative integer."
 
@@ -31,13 +26,13 @@ def timeConversion(secondsSinceMidnight):
     # Calculate seconds
     seconds = remainingSeconds % 60
 
-    # Determine AM or PM
+    # Figure out AM or PM
     if hours < 12:
         amOrPm = "AM"
     else:
         amOrPm = "PM"
 
-    # Convert to 12-hour format
+    # Have the time be in a 24 hour scale
     displayHours = hours % 12
     if displayHours == 0:
         displayHours = 12
@@ -45,15 +40,10 @@ def timeConversion(secondsSinceMidnight):
     # Return formatted string
     return str(displayHours) + " " + str(minutes) + " " + str(seconds) + " " + amOrPm
 
-
-# -------------------------
-# Main Program
-# -------------------------
-
-# Ask the user for input
+# Get the user to input
 userInput = input("Enter the number of seconds since midnight: ")
 
-# Check if input is a valid number
+# Make sure the input is valid
 if not userInput.isdigit():
     print("Input must be a non-negative integer.")
 else:
