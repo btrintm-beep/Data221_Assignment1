@@ -1,9 +1,3 @@
-****## Repository Overview
-
-This repository contains the Python solutions for **Assignment 1**.
-Each question is implemented in a **separate Python file**, follows the assignment instructions, and runs without errors.
-
-The code uses **clear, descriptive variable names** and includes comments to improve readability and understanding.
 
 ---
 
