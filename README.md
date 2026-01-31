@@ -115,7 +115,4 @@ pip install pandas
 * Variable names are descriptive, and logic is implemented using simple, readable Python constructs.
 * Each file can be run independently.
 
----
 
-If you want, I can also give you a **short, clean GitHub repo description** to put in the “About” section — that’s a small thing TAs sometimes notice 👀✨
-****
