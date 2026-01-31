@@ -12,13 +12,13 @@ def distributionAnalysis(numbersList):
 
     totalElements = len(numbersList)
 
-    # Create a list of unique values and sort it
+    # Make list with unique values
     uniqueValues = sorted(set(numbersList))
 
-    # Create an empty dictionary to store results
+    # Make a dictionary 
     distributionDictionary = {}
 
-    # Loop through each unique value
+    # go through every unique value
     for key in uniqueValues:
         countLessOrEqual = 0
 
@@ -30,16 +30,16 @@ def distributionAnalysis(numbersList):
         # Calculate the percentage
         percentage = (countLessOrEqual / totalElements) * 100
 
-        # Store it in a dictionary
+        # Store the calculated percentage in the dictionary
         distributionDictionary[key] = percentage
 
     return distributionDictionary
 
 
-# Ask user to enter numbers separated by spaces
+# get the user to input numbers seperated by commas
 userInput = input("Enter a list of numbers separated by spaces: ")
 
-# Split input into a list of strings
+# have the input be split into lists of strings
 inputList = userInput.split()
 
 numbersList = []
@@ -53,7 +53,7 @@ for value in inputList:
         numbersList = []
         break
 
-# Run function if input is valid
+# run the function but only when the input is valid
 if len(numbersList) > 0:
     result = distributionAnalysis(numbersList)
     print("Distribution Dictionary:")
