@@ -1,17 +1,16 @@
 import pandas as pd
 
-# Given data
+# Have the data here
 data = {
     "A": [1, 2, 2, 1],
     "B": [3.1, 4.2, 1.5, 6.3],
     "C": [800, 150, 400, 210]
 }
 
-# Create the DataFrame
+# Make the dataframe
 dataFrame = pd.DataFrame(data)
 
-# Add a new computed column
-# This example multiplies column A and B, then adds column C
+#Make a column that multiplies A and B then after it adds C
 dataFrame["Computed"] = (dataFrame["A"] * dataFrame["B"]) + dataFrame["C"]
 
 # Print the final DataFrame
